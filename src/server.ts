@@ -23,7 +23,7 @@ class Application {
         this.app.listen(this.port, () => console.log("Server listening on port " + this.port + "!"));
     }
 
-    private setMongoConfig() {
+    public setMongoConfig() {
         Mongoose.Promise = global.Promise;
 
         Mongoose.connect(MONGO_URL, {
