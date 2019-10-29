@@ -1,3 +1,4 @@
+// controller gives us what responses to return to the browser/user
 import express from "express";
 
 export class Controller {
