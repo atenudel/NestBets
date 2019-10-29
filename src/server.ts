@@ -15,7 +15,7 @@ class Application {
         this.app.use(bodyParser.json());
         this.initCors();
     }
-    // Starts the server on the port specified in the environment or on port 3000 if none specified.
+    // Starts the server on the port specified in the environment
     public start(): void {
         this.buildRoutes();
         this.app.listen(this.port, () => console.log("Server listening on port " + this.port + "!"));
