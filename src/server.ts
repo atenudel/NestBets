@@ -15,6 +15,7 @@ class Application {
         this.port = +process.env.serverPort || PORT;
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use(bodyParser.json());
+        this.setMongoConfig();
         this.initCors();
     }
     // Starts the server on the port specified in the environment
@@ -23,7 +24,7 @@ class Application {
         this.app.listen(this.port, () => console.log("Server listening on port " + this.port + "!"));
     }
 
-    public setMongoConfig() {
+    public setMongoConfig(): void {
         Mongoose.Promise = global.Promise;
 
         Mongoose.connect(MONGO_URL, {

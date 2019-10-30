@@ -26,7 +26,13 @@ export class Controller {
     }
 
     public getUser(req: express.Request, res: express.Response): void {
-      res.status(200).json({result: 'not implemented'})
+      User.find({}, (error: Error, user: any) => {
+        if(error) {
+          res.send(error);
+        }
+        res.json(user);
+
+      });
 
     }
 
