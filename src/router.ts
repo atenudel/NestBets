@@ -6,9 +6,12 @@ export class ApiRouter {
     private controller: Controller = new Controller();
 
     // Creates the routes for this router and returns a populated router object
+    // so go checkout the controller.ts file to see what each router object does
     public getRouter(): express.Router {
         this.router.get("/hello", this.controller.getHello);
         this.router.post("/hello", this.controller.postHello);
+        this.router.get("/", this.controller.welcomeMEssage);
+
         return this.router;
     }
 }
