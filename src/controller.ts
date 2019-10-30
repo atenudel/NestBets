@@ -7,6 +7,7 @@ DELETE = DELETE
 */
 import express from "express";
 import {WELCOME_MESSAGE} from "./constants/api.constants";
+import {User} from "./models/user.model";
 // this controller basically has our services
 export class Controller {
     public welcomeMessage(req: express.Request, res:express.Response): void {
@@ -18,9 +19,15 @@ export class Controller {
     public postHello(req: express.Request, res: express.Response): void {
         res.send(req.body);
     }
-
+    // add a new user to the football database
     public postUser(req: express.Request, res: express.Response): void {
-       
+       const newUser = new User(req.body);
+       newUser.save((error: Error, User: any) => {
+        if (error) {
+          res.send(error);
+        }
+        res.json(User);
+      });
     }
 
     public getUser(req: express.Request, res: express.Response): void {

@@ -11,7 +11,8 @@ export class ApiRouter {
         this.router.get("/hello", this.controller.getHello);
         this.router.post("/hello", this.controller.postHello);
         this.router.get("/", this.controller.welcomeMessage);
-
+        this.router.post("/postUser", this.controller.postUser);
+        
         return this.router;
     }
 }

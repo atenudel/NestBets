@@ -10,4 +10,4 @@ SPREAD: Double
 });
 
 // creating the model
-export const match = mongoose.model("match",SpreadSchema);
+export const Match = mongoose.model("Match",SpreadSchema);
