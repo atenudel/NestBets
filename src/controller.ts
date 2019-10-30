@@ -15,14 +15,18 @@ export class Controller {
         res.send(req.body); //req.body is an empty object
     }
     // add a new user to the football database
-    public postUser(req: express.Request, res: express.Response) {
-       const newUser = new User(req.body);
-       newUser.save((error: Error, User: any) => {
-        if (error) {
-          res.send(error);
-        }
-        res.json(User);
-      });
+    public postUser(req: express.Request, res: express.Response):void {
+       //const newUser = new User(req.body);
+      const newUser = new User({profile: req.body.profile});
+      console.log({profile: req.body.profile});
+      
+        newUser.save((error: Error, user: any) => {
+          if (error) {
+            res.send(error);
+          }
+          res.json(user);
+        });
+       
     }
 
     public getUser(req: express.Request, res: express.Response): void {
@@ -31,9 +35,7 @@ export class Controller {
           res.send(error);
         }
         res.json(user);
-
       });
-
     }
 
     public putUser(req: express.Request, res: express.Response): void {
