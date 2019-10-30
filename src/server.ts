@@ -46,6 +46,7 @@ class Application {
     // setup routes for the express server
     public buildRoutes(): void {
         this.app.use("/api", new ApiRouter().getRouter());
+
     }
 }
 new Application().start();
