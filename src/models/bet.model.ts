@@ -7,4 +7,4 @@ const BetSchema = new mongoose.Schema({
     BETMONEY: [Decimal128]
 });
 
-export const bet = mongoose.model("bet",SpreadSchema);
+export const bet = mongoose.model("bet",BetSchema);
