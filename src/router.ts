@@ -10,7 +10,7 @@ export class ApiRouter {
     public getRouter(): express.Router {
         this.router.get("/hello", this.controller.getHello);
         this.router.post("/hello", this.controller.postHello);
-        this.router.get("/", this.controller.welcomeMEssage);
+        this.router.get("/", this.controller.welcomeMessage);
 
         return this.router;
     }
