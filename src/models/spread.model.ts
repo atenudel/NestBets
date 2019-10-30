@@ -3,11 +3,13 @@ import mongoose from "mongoose";
 import { Double } from "bson";
 
 const SpreadSchema = new mongoose.Schema({
-WEEK: Number,
-TEAM1: String,
-TEAM2: String,
-SPREAD: Double
+spread: {
+    WEEK: Number,
+    TEAM1: String,
+    TEAM2: String,
+    SPREAD: Double 
+}
 });
 
 // creating the model
-export const Match = mongoose.model("Match",SpreadSchema);
+export const Spread = mongoose.model("Spread",SpreadSchema);

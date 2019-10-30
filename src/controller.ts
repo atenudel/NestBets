@@ -54,15 +54,15 @@ export class Controller {
        
     }
     // adds a match for the season. might not need this... 
-    public postMatch(req: express.Request, res: express.Response): void {
+    public postSpread(req: express.Request, res: express.Response): void {
        
     }
 
-    public getMatch(req: express.Request, res: express.Response): void {
+    public getSpread(req: express.Request, res: express.Response): void {
        
     }
 
-    public putMatch(req: express.Request, res: express.Response): void {
+    public putSpread(req: express.Request, res: express.Response): void {
        
     }
 
