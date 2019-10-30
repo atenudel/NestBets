@@ -28,7 +28,7 @@ export class Controller {
         });
        
     }
-
+    // this gets all the users... so really getUsers but whatever
     public getUser(req: express.Request, res: express.Response): void {
       User.find({}, (error: Error, user: any) => {
         if(error) {
@@ -37,23 +37,23 @@ export class Controller {
         res.json(user);
       });
     }
-
+    // modifies a current user according to... username? id? idk yet
     public putUser(req: express.Request, res: express.Response): void {
        
     }
-
+    // creates a bet placed by a user
     public postBet(req: express.Request, res: express.Response): void {
        
     }
-
+    // list a bet or bets
     public getBet(req: express.Request, res: express.Response): void {
        
     }
-
+    // modifies a bet. perhaps adds people to a list of the bet
     public putBet(req: express.Request, res: express.Response): void {
        
     }
-
+    // adds a match for the season. might not need this... 
     public postMatch(req: express.Request, res: express.Response): void {
        
     }
@@ -62,7 +62,7 @@ export class Controller {
        
     }
 
-    public pustMatch(req: express.Request, res: express.Response): void {
+    public putMatch(req: express.Request, res: express.Response): void {
        
     }
 
