@@ -1,20 +1,15 @@
 // controller gives us what responses to return to the browser/user
-/*
-CREATE = POST
+/*CREATE = POST
 READ = GET
 UPDATE = PUT
-DELETE = DELETE
-*/
+DELETE = DELETE*/
 import express from "express";
 import {WELCOME_MESSAGE} from "./constants/api.constants";
 import {User} from "./models/user.model";
 // this controller basically has our services
 export class Controller {
-    public getWelcomeMessage(req: express.Request, res:express.Response): void {
-        res.status(200).send(WELCOME_MESSAGE);
-    }
     public getHello(req: express.Request, res: express.Response): void {
-        res.send("Hello World");
+        res.status(200).send(WELCOME_MESSAGE);
     }
     public postHello(req: express.Request, res: express.Response): void {
         res.send(req.body); //req.body is an empty object
@@ -31,7 +26,8 @@ export class Controller {
     }
 
     public getUser(req: express.Request, res: express.Response): void {
-       
+      res.status(200).json({result: 'not implemented'})
+
     }
 
     public putUser(req: express.Request, res: express.Response): void {
