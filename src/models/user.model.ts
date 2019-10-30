@@ -9,4 +9,4 @@ LOSS: Number
 });
 
 // creating the user model
-export const match = mongoose.model("match",UserSchema);
+export const match = mongoose.model("user",UserSchema);
