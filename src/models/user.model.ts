@@ -3,7 +3,6 @@ import { Decimal128 } from "bson";
 
 const UserSchema = new mongoose.Schema({
     profile: {
-        ID: Number,
         NAME: String,
         BALANCE: Decimal128,
         WIN: Number,

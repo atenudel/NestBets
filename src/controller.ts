@@ -22,7 +22,6 @@ export class Controller {
        //const newUser = new User(req.body);
       const newUser = new User({profile: req.body.profile});
       //console.log({profile: req.body.profile});
-      
         newUser.save((error: Error, user: any) => {
           if (error) {
             res.send(error);
@@ -32,14 +31,15 @@ export class Controller {
     }
     // this gets all the users... so really getUsers but whatever
     public getUser(req: express.Request, res: express.Response): void {
-      User.find({}, (error: Error, user: any) => {
+      User.findById(req.body._id, (error: Error, user: any) => {
+       //console.log(req.body._id);
         if(error) {
           res.send(error);
         }
         res.json(user);
       });
     }
-    // modifies a current user according to... username? id? idk yet
+    // modifies a current user according to id.
     public putUser(req: express.Request, res: express.Response): void {
        
     }
