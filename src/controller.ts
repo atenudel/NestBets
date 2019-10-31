@@ -1,4 +1,4 @@
-// controller gives us what responses to return to the browser/user
+// controller gives us what responses to return to the browser/user/website thing
 /*CREATE = POST
 READ = GET
 UPDATE = PUT
@@ -6,6 +6,9 @@ DELETE = DELETE*/
 import express from "express";
 import {WELCOME_MESSAGE} from "./constants/api.constants";
 import {User} from "./models/user.model";
+import {Spread} from "./models/spread.model";
+import {Bet} from "./models/bet.model";
+
 // this controller basically has our services
 export class Controller {
     public getHello(req: express.Request, res: express.Response): void {
@@ -18,7 +21,7 @@ export class Controller {
     public postUser(req: express.Request, res: express.Response):void {
        //const newUser = new User(req.body);
       const newUser = new User({profile: req.body.profile});
-      console.log({profile: req.body.profile});
+      //console.log({profile: req.body.profile});
       
         newUser.save((error: Error, user: any) => {
           if (error) {
@@ -26,7 +29,6 @@ export class Controller {
           }
           res.json(user);
         });
-       
     }
     // this gets all the users... so really getUsers but whatever
     public getUser(req: express.Request, res: express.Response): void {
