@@ -19,6 +19,10 @@ export class ApiRouter {
         this.router.get("/getspread/:id", this.controller.getSpread);
         this.router.put("/putspread/:id", this.controller.putSpread);
 
+        this.router.post("/postbet",this.controller.postBet);
+        this.router.get("/getbet/:id", this.controller.getBet);
+        this.router.put("/putbet/:id", this.controller.putBet);
+
         return this.router;
     }
 

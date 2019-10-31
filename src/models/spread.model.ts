@@ -8,9 +8,8 @@ spread: {
     WEEK: Number,
     TEAM1: String,
     TEAM2: String,
-    SPREAD: Number
-     
-}
+    SPREAD: Number   
+    }
 });
 
 /* alternate model for this.
