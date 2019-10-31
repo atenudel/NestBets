@@ -63,23 +63,52 @@ export class Controller {
        });
    }
    public getSpread(req: express.Request, res: express.Response): void {
-      
+    Spread.findById(req.body._id, (error: Error, spread: any) => {
+      //console.log(req.body._id);
+       if(error) {
+         res.send(error);
+       }
+       res.json(spread);
+     });
    }
 
    public putSpread(req: express.Request, res: express.Response): void {
-      
+    Spread.findByIdAndUpdate(req.body._id,req.body, (error: Error, spread: any) => {
+      if(error) {
+        res.send(error);
+      }
+      res.json(spread);
+    });
    }
     // creates a bet placed by a user
     public postBet(req: express.Request, res: express.Response): void {
-       
+      const newBet = new Bet({bet: req.body.bet});
+      //console.log({profile: req.body.profile});
+        newBet.save((error: Error, bet: any) => {
+          if (error) {
+            res.send(error);
+          }
+          res.json(bet);
+        });
     }
     // list a bet or bets
     public getBet(req: express.Request, res: express.Response): void {
-       
+      Bet.findById(req.body._id, (error: Error, bet: any) => {
+        //console.log(req.body._id);
+         if(error) {
+           res.send(error);
+         }
+         res.json(bet);
+       });
     }
-    // modifies a bet. perhaps adds people to a list of the bet
+    // modifies a bet.
     public putBet(req: express.Request, res: express.Response): void {
-       
+      Bet.findByIdAndUpdate(req.body._id,req.body, (error: Error, bet: any) => {
+        if(error) {
+          res.send(error);
+        }
+        res.json(bet);
+      });
     }
   
 
