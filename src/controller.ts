@@ -29,7 +29,7 @@ export class Controller {
           res.json(user);
         });
     }
-    // this gets all the users... so really getUsers but whatever
+    // finds a single user by _id field in req.body._id. test it out in postman
     public getUser(req: express.Request, res: express.Response): void {
       User.findById(req.body._id, (error: Error, user: any) => {
        //console.log(req.body._id);
@@ -39,9 +39,16 @@ export class Controller {
         res.json(user);
       });
     }
-    // modifies a current user according to id.
+    // modifies a current user according to id
+    // make sure to include the nonmodified fields when writing
+    // in body params... otherwise data will be lost
     public putUser(req: express.Request, res: express.Response): void {
-       
+      User.findByIdAndUpdate(req.body._id,req.body, (error: Error, user: any) => {
+         if(error) {
+           res.send(error);
+         }
+         res.json(user);
+       });
     }
     // creates a bet placed by a user
     public postBet(req: express.Request, res: express.Response): void {
