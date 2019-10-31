@@ -7,7 +7,7 @@ spread: {
     WEEK: Number,
     TEAM1: String,
     TEAM2: String,
-    SPREAD: Double 
+    SPREAD: Number 
 }
 });
 

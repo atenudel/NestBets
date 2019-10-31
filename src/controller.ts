@@ -11,6 +11,7 @@ import {Bet} from "./models/bet.model";
 
 // this controller basically has our services
 export class Controller {
+  
     public getHello(req: express.Request, res: express.Response): void {
         res.status(200).send(WELCOME_MESSAGE);
     }
@@ -50,6 +51,24 @@ export class Controller {
          res.json(user);
        });
     }
+      // adds a match for the season. might not need this... 
+    public postSpread(req: express.Request, res: express.Response): void {
+     const newSpread = new Spread({spread: req.body.spread});
+     //console.log({profile: req.body.profile});
+       newSpread.save((error: Error, spread: any) => {
+         if (error) {
+           res.send(error);
+         }
+         res.json(spread);
+       });
+   }
+   public getSpread(req: express.Request, res: express.Response): void {
+      
+   }
+
+   public putSpread(req: express.Request, res: express.Response): void {
+      
+   }
     // creates a bet placed by a user
     public postBet(req: express.Request, res: express.Response): void {
        
@@ -62,17 +81,6 @@ export class Controller {
     public putBet(req: express.Request, res: express.Response): void {
        
     }
-    // adds a match for the season. might not need this... 
-    public postSpread(req: express.Request, res: express.Response): void {
-       
-    }
-
-    public getSpread(req: express.Request, res: express.Response): void {
-       
-    }
-
-    public putSpread(req: express.Request, res: express.Response): void {
-       
-    }
+  
 
 }
