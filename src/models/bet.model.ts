@@ -4,8 +4,9 @@ import { Decimal128 } from 'bson';
 // not ready to fill
 const BetSchema = new mongoose.Schema({
   bet:{
-    USERS: [String],
-    BETMONEY: [Decimal128]
+    MATCH: Number, //using id of the spread
+    USERS: [String], //using id of the users
+    BETMONEY: [Decimal128] // big hmmm
   } 
 });
 
