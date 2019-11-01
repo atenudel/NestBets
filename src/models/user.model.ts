@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import { Decimal128 } from "bson";
 
 const UserSchema = new mongoose.Schema({
     profile: {
         NAME: String,
-        BALANCE: Decimal128,
+        EMAIL: String,
+        BALANCE: Number,
         WIN: Number,
         LOSS: Number
       }

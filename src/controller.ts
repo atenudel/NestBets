@@ -91,7 +91,7 @@ export class Controller {
           res.json(bet);
         });
     }
-    // list a bet or bets
+    // list a bet by ID
     public getBet(req: express.Request, res: express.Response): void {
       Bet.findById(req.body._id, (error: Error, bet: any) => {
         //console.log(req.body._id);
@@ -101,7 +101,7 @@ export class Controller {
          res.json(bet);
        });
     }
-    // modifies a bet.
+    // modifies a bet by ID
     public putBet(req: express.Request, res: express.Response): void {
       Bet.findByIdAndUpdate(req.body._id,req.body, (error: Error, bet: any) => {
         if(error) {
