@@ -29,7 +29,8 @@ class Application {
 
         Mongoose.connect(MONGO_URL, {
             useNewUrlParser: true,
-            useUnifiedTopology : true
+            useUnifiedTopology : true,
+            useFindAndModify : true
         });
     }
     // sets up to allow cross-origin support from any host.  You can change the options to limit who can access the api.
