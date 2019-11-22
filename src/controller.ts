@@ -14,12 +14,11 @@ import {Bet} from "./models/bet.model";
 import {SECRET} from "./constants/api.constants";
 
 // generates the JWT token for our auth
-/*
 function generateToken(user) {
   return jwt.sign(user,SECRET, {
       expiresIn: 10080 // seconds
   });
-} */
+} 
 
 // this controller basically has our services
 export class Controller {

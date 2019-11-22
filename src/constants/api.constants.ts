@@ -8,4 +8,4 @@ export const MONGO_URL = "";
 
 export const WELCOME_MESSAGE = "Welcome!";
 
-export const SECRET = "not the real secret";
+export const SECRET = "";

@@ -4,6 +4,7 @@ import {PORT} from "./constants/api.constants";
 import Mongoose from "mongoose";
 import {ApiRouter} from "./router";
 import {MONGO_URL} from "./constants/api.constants";
+import passport from 'passport';
 
 class Application {
     public app: express.Application;
