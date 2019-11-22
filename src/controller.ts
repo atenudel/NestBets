@@ -4,10 +4,22 @@ READ = GET
 UPDATE = PUT
 DELETE = DELETE*/
 import express from "express";
+import jwt from "jsonwebtoken";
+import crypto from "crypto";
+
 import {WELCOME_MESSAGE} from "./constants/api.constants";
 import {User} from "./models/user.model";
 import {Spread} from "./models/spread.model";
 import {Bet} from "./models/bet.model";
+import {SECRET} from "./constants/api.constants";
+
+// generates the JWT token for our auth
+/*
+function generateToken(user) {
+  return jwt.sign(user,SECRET, {
+      expiresIn: 10080 // seconds
+  });
+} */
 
 // this controller basically has our services
 export class Controller {

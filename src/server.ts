@@ -1,9 +1,8 @@
 import bodyParser from "body-parser";
 import express from "express";
 import {PORT} from "./constants/api.constants";
-
-import {ApiRouter} from "./router";
 import Mongoose from "mongoose";
+import {ApiRouter} from "./router";
 import {MONGO_URL} from "./constants/api.constants";
 
 class Application {
