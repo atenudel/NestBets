@@ -1,5 +1,5 @@
 import {User} from '../models/user.model';
-
+// edit roles? we only really need 2 roles if we do this
 exports.roles = {
     REQUIRE_ADMIN : "Admin",
     REQUIRE_OWNER : "Owner",

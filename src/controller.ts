@@ -12,14 +12,12 @@ import {User} from "./models/user.model";
 import {Spread} from "./models/spread.model";
 import {Bet} from "./models/bet.model";
 import {SECRET} from "./constants/api.constants";
-
 // generates the JWT token for our auth
-function generateToken(user) {
-  return jwt.sign(user,SECRET, {
+function generateToken(user:any) {
+  return jwt.sign(JSON.stringify(user),SECRET, {
       expiresIn: 10080 // seconds
   });
-} 
-
+}
 // this controller basically has our services
 export class Controller {
   
@@ -30,16 +28,49 @@ export class Controller {
         res.send(req.body); //req.body is an empty object
     }
     // add a new user to the football database
-    public postUser(req: express.Request, res: express.Response):void {
+    public postUser(req: express.Request, res: express.Response) {
        //const newUser = new User(req.body);
-      const newUser = new User({profile: req.body.profile});
+       const email = req.body.email;
+       const firstName = req.body.firstName;
+       const lastName = req.body.lastName;
+       const password = req.body.password;
+      
+       if (!email) {
+        return res.status(422).send({ error: 'You must enter an email address.' });
+      }
+      if (!firstName || !lastName) {
+        return res.status(422).send({ error: 'You must enter your full name.' });
+      }
+      if (!password) {
+        return res.status(422).send({ error: 'You must enter a password.' });
+      }
       //console.log({profile: req.body.profile});
-        newUser.save((error: Error, user: any) => {
-          if (error) {
-            res.send(error);
-          }
-          res.json(user);
+      let user = new User({
+        email: email,
+        password: password,
+        provider: 'local',
+        roles: ['User'],
+        //auths: { clients: [clientid] /*apis: authAPIs*/},
+        profile: { firstName: firstName, lastName: lastName }
+      });
+      user.save((error: Error, user: any) => {
+        if (error) {
+          res.send(error);
+        }
+        let plainObj; // convert to plain obj
+        try {
+          plainObj = JSON.parse(JSON.stringify(user));
+          console.log(plainObj);
+        } catch (e) {
+          console.log(e);
+        }
+        let userInfo = res.json(plainObj);
+        // 201 is creation success
+        res.status(201).json({
+          token: 'JWT' + generateToken(plainObj),
+          user: userInfo
         });
+      });
     }
     // finds a single user by _id field in req.body._id. test it out in postman
     public getUser(req: express.Request, res: express.Response): void {

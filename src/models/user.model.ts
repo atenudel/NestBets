@@ -54,7 +54,6 @@ UserSchema.methods.comparePassword = function (candidatePassword: any, cb: { (ar
     cb(null, isMatch);
   });
 }
-
 UserSchema.methods.toJson = function () {
   return {
     _id: this._id,
