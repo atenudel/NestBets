@@ -62,3 +62,6 @@ typings/
 
 # ignore .env fil
 .env
+
+# ignore constants
+api.constants.ts

@@ -64,8 +64,8 @@ export class Controller {
    }
     // gets all of the spreads for that week
    public getSpreads(req: express.Request, res: express.Response): void {
-    // value after 'WEEK' needs to be changed... just depends on what week
-    var query = Spread.find({'WEEK':13});
+    // value after 'WEEK' needs to be changed depending on what week
+    var query = Spread.find({'WEEK':10});
     query.exec((error:Error, spreads: any) => {
       if(error) {
         res.send(error);
@@ -73,7 +73,7 @@ export class Controller {
       res.json(spreads);
     });
    }
-   // pull a specific spread
+   // pull a specific spread, use it for user spreads?
    public getSpread(req: express.Request, res: express.Response): void {
     Spread.findById(req.body._id, (error: Error, spread: any) => {
       //console.log(req.body._id);
@@ -83,7 +83,7 @@ export class Controller {
        res.json(spread);
      });
    }
-
+   // modify a spread. if needed i guess
    public putSpread(req: express.Request, res: express.Response): void {
     Spread.findByIdAndUpdate(req.body._id,req.body, (error: Error, spread: any) => {
       if(error) {
@@ -93,6 +93,7 @@ export class Controller {
     });
    }
     // creates a bet placed by a user
+    // TODO: somehow make it useful
     public postBet(req: express.Request, res: express.Response): void {
       const newBet = new Bet({bet: req.body.bet});
       //console.log({profile: req.body.profile});
