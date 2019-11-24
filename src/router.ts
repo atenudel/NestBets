@@ -10,17 +10,18 @@ export class ApiRouter {
         this.router.get("/hello", this.controller.getHello); // shows welcome message now
         this.router.post("/hello", this.controller.postHello);
 
-        this.router.post("/postuser", this.controller.postUser);
-        this.router.get("/getuser/:id", this.controller.getUser);
-        this.router.put("/putuser/:id", this.controller.putUser);
+        this.router.post("/postUser", this.controller.postUser);
+        this.router.get("/getUser/:id", this.controller.getUser);
+        this.router.put("/putUser/:id", this.controller.putUser);
 
-        this.router.post("/postspread",this.controller.postSpread);
-        this.router.get("/getspread/:id", this.controller.getSpread);
-        this.router.put("/putspread/:id", this.controller.putSpread);
+        this.router.post("/postSpread",this.controller.postSpread);
+        this.router.get("/getSpreads", this.controller.getSpreads);
+        this.router.get("/getSpread/:id", this.controller.getSpread);
+        this.router.put("/putSpread/:id", this.controller.putSpread);
 
-        this.router.post("/postbet",this.controller.postBet);
-        this.router.get("/getbet/:id", this.controller.getBet);
-        this.router.put("/putbet/:id", this.controller.putBet);
+        this.router.post("/postBet",this.controller.postBet);
+        this.router.get("/getBet/:id", this.controller.getBet);
+        this.router.put("/putBet/:id", this.controller.putBet);
 
         return this.router;
     }

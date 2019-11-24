@@ -62,6 +62,18 @@ export class Controller {
          res.json(spread);
        });
    }
+    // gets all of the spreads for that week
+   public getSpreads(req: express.Request, res: express.Response): void {
+    // value after 'WEEK' needs to be changed... just depends on what week
+    var query = Spread.find({'WEEK':13});
+    query.exec((error:Error, spreads: any) => {
+      if(error) {
+        res.send(error);
+      }
+      res.json(spreads);
+    });
+   }
+   // pull a specific spread
    public getSpread(req: express.Request, res: express.Response): void {
     Spread.findById(req.body._id, (error: Error, spread: any) => {
       //console.log(req.body._id);
@@ -91,7 +103,7 @@ export class Controller {
           res.json(bet);
         });
     }
-    // list a bet by ID
+    // list a bet by ID // a user will have these...
     public getBet(req: express.Request, res: express.Response): void {
       Bet.findById(req.body._id, (error: Error, bet: any) => {
         //console.log(req.body._id);
