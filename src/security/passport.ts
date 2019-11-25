@@ -11,7 +11,7 @@ const jwtOptions = {
 };
 // the jwt login strategy
 const JWTLogin = new JwtStrategy(jwtOptions, function(payload:any, done:any) {
-    let id = new mongoose.Types.ObjectId(payload._id);
+    let id = new mongoose.Types.ObjectId(payload.data.id);
     User.findById(id, function (err, user) {
         if (err) { return done(err, false); }
 

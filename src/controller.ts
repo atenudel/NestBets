@@ -14,7 +14,7 @@ import {Bet} from "./models/bet.model";
 import {SECRET} from "./constants/api.constants";
 // generates the JWT token for our auth
 function generateToken(user:any) {
-  return jwt.sign(JSON.stringify(user),SECRET, {
+  return jwt.sign(user,SECRET, {
       expiresIn: 10080 // seconds
   });
 }
@@ -53,17 +53,10 @@ export class Controller {
         if (error) {
           res.send(error);
         }
-        let plainObj; // convert to plain obj
-        try {
-          plainObj = JSON.parse(JSON.stringify(user));
-          console.log(plainObj);
-        } catch (e) {
-          console.log(e);
-        }
-        let userInfo = res.json(plainObj);
+        let userInfo = res.json(user);
         // 201 is creation success
         res.status(201).json({
-          token: 'JWT' + generateToken(plainObj),
+          token: 'JWT' + generateToken(userInfo),
           user: userInfo
         });
       });

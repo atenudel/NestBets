@@ -24,7 +24,6 @@ export const UserSchema: Schema = new Schema({
   profile: {
     firstName: { type: String },
     lastName: { type: String },
-    trim: true
   }
 });
 
@@ -68,8 +67,6 @@ UserSchema.methods.toJson = function () {
     firstName: this.profile.firstName,
     lastName: this.profile.lastName,
     email: this.email,
-    role: this.role,
-    provider: this.provider
   }
 }
 // creating the user model
