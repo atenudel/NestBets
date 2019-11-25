@@ -1,22 +1,30 @@
-import mongoose, { Model, model, Schema } from "mongoose";
-import Document from "mongoose";
+import mongoose, { Document, Model, model, Schema } from "mongoose";
 import bcrypt from 'bcrypt';
 import hash from 'bcrypt'
+
+export interface IUser extends Document {
+  email:string;
+  password:string;
+  profile:string;
+}
 
 export const UserSchema: Schema = new Schema({
   email: {
     type: String,
     lowercase: true,
     unique: true,
-    required: true
+    required: "please enter an email",
+    trim: true
   },
   password: {
     type: String,
-    required: true
+    required: "please enter password",
+    trim: true
   },
   profile: {
     firstName: { type: String },
-    lastName: { type: String }
+    lastName: { type: String },
+    trim: true
   }
 });
 
@@ -65,4 +73,4 @@ UserSchema.methods.toJson = function () {
   }
 }
 // creating the user model
-export const User = mongoose.model("User",UserSchema);
+export const User: Model<IUser>= mongoose.model<IUser>("User",UserSchema);

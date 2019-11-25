@@ -35,7 +35,7 @@ export class Controller {
        const lastName = req.body.lastName;
        const password = req.body.password;
       
-       if (!email) {
+      /*(if (!email) {
         return res.status(422).send({ error: 'You must enter an email address.' });
       }
       if (!firstName || !lastName) {
@@ -43,14 +43,10 @@ export class Controller {
       }
       if (!password) {
         return res.status(422).send({ error: 'You must enter a password.' });
-      }
-      //console.log({profile: req.body.profile});
+      }*/
       let user = new User({
         email: email,
         password: password,
-        provider: 'local',
-        roles: ['User'],
-        //auths: { clients: [clientid] /*apis: authAPIs*/},
         profile: { firstName: firstName, lastName: lastName }
       });
       user.save((error: Error, user: any) => {

@@ -4,7 +4,7 @@
 export const PORT = 3002;
 // you dont want to upload this...
 // using the ddefault mongodb port
-export const MONGO_URL = "mongodb+srv://xyzuname:xyzpassword@cluster0-qjzex.mongodb.net/football?retryWrites=true&w=majority";
+export const MONGO_URL = "mongodb+srv://aten:Mongodookie@cluster0-qjzex.mongodb.net/football?retryWrites=true&w=majority";
 
 export const WELCOME_MESSAGE = "Welcome!";
 
