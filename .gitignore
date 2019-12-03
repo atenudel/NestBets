@@ -66,3 +66,4 @@ typings/
 # ignore constants
 src/constants/
 api.constants.ts
+src/constants/api.constants.ts
