@@ -18,11 +18,30 @@ export class Controller {
     public postHello(req: express.Request, res: express.Response): void {
         res.send(req.body); //req.body is an empty object
     }
+    // register
     // add a new user to the football database
-    public postUser(req: express.Request, res: express.Response):void {
+    public postUser(req: express.Request, res: express.Response) {
        //const newUser = new User(req.body);
+       const EMAIL = req.body.email;
+       const NAME = req.body.name;
+       const PASSWORD = req.body.password;
+       const BALANCE = req.body.balance;
+       
+       if(!req.body.profile.EMAIL) {
+        return res.status(422).json({error : "Input Email"});
+       }
+       if(!req.body.profile.NAME) {
+        return res.status(422).json({error : "Input Name"});
+       }
+       if(!req.body.profile.PASSWORD) {
+        return res.status(422).json({error : "Input Password"});
+       }
+       if(!req.body.profile.BALANCE) {
+        return res.status(422).json({error : "Input Balance"});
+       }
       const newUser = new User({profile: req.body.profile});
-      //console.log({profile: req.body.profile});
+      
+
         newUser.save((error: Error, user: any) => {
           if (error) {
             res.send(error);
@@ -30,6 +49,7 @@ export class Controller {
           res.json(user);
         });
     }
+    // login
     // finds a single user by _id field in req.body._id. test it out in postman
     public getUser(req: express.Request, res: express.Response): void {
       User.findById(req.body._id, (error: Error, user: any) => {
@@ -65,7 +85,7 @@ export class Controller {
     // gets all of the spreads for that week
    public getSpreads(req: express.Request, res: express.Response): void {
     // value after 'WEEK' needs to be changed depending on what week
-    var query = Spread.find({'WEEK':10});
+    var query = Spread.find({'WEEK':13});
     query.exec((error:Error, spreads: any) => {
       if(error) {
         res.send(error);

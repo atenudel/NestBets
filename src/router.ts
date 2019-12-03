@@ -8,11 +8,10 @@ export class ApiRouter {
     // so go checkout the controller.ts file to see what each router object does
     public getRouter(): express.Router {
         this.router.get("/hello", this.controller.getHello); // shows welcome message now
-        this.router.post("/hello", this.controller.postHello);
-
-        this.router.post("/postUser", this.controller.postUser);
-        this.router.get("/getUser/:id", this.controller.getUser);
-        this.router.put("/putUser/:id", this.controller.putUser);
+       // this.router.post("/hello", this.controller.postHello);
+        this.router.post("/postUser", this.controller.postUser); // register
+        this.router.get("/getUser/:id", this.controller.getUser); // login
+        this.router.put("/putUser/:id", this.controller.putUser); //modify pw?
 
         this.router.post("/postSpread",this.controller.postSpread);
         this.router.get("/getSpreads", this.controller.getSpreads);
