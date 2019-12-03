@@ -64,4 +64,5 @@ typings/
 .env
 
 # ignore constants
+constants
 api.constants.ts
