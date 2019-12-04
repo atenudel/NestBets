@@ -10,7 +10,7 @@ export class ApiRouter {
         this.router.get("/hello", this.controller.getHello); // shows welcome message now
        // this.router.post("/hello", this.controller.postHello);
         this.router.post("/postUser", this.controller.postUser); // register
-        this.router.get("/getUser/:id", this.controller.getUser); // login
+        this.router.get("/getUser", this.controller.getUser); // login
         this.router.put("/putUser/:id", this.controller.putUser); //modify pw?
 
         this.router.post("/postSpread",this.controller.postSpread);

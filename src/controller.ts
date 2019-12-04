@@ -20,6 +20,7 @@ export class Controller {
     }
     // register
     // add a new user to the football database
+    // TODO: check if user already exists, if so, do not allow registration
     public postUser(req: express.Request, res: express.Response) {
        //const newUser = new User(req.body);
        const EMAIL = req.body.email;
@@ -40,24 +41,28 @@ export class Controller {
         return res.status(422).json({error : "Input Balance"});
        }
       const newUser = new User({profile: req.body.profile});
-      
-
         newUser.save((error: Error, user: any) => {
           if (error) {
             res.send(error);
           }
           res.json(user);
+          console.log(user);
         });
     }
     // login
     // finds a single user by _id field in req.body._id. test it out in postman
-    public getUser(req: express.Request, res: express.Response): void {
-      User.findById(req.body._id, (error: Error, user: any) => {
-       //console.log(req.body._id);
+    // TODO switch to find by pw and email...
+    public getUser(req: express.Request, res: express.Response) {
+
+      const EMAIL = req.body.profile.EMAIL;
+
+      User.findOne({'profile.EMAIL': EMAIL},(error: Error, user: any) => {
+        console.log("the email is: ", EMAIL);
         if(error) {
           res.send(error);
         }
         res.json(user);
+        console.log(user);
       });
     }
     // modifies a current user according to id
